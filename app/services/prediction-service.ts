@@ -6,6 +6,7 @@ let token_from_cookies = Cookies.get("token")
 
 export async function getModels() {
     try {
+        let token_from_cookies = Cookies.get("token")
         const response = await fetch(API_BASE_URL + "/api/model-manage/models", {
             method: "GET",
             headers: {
@@ -23,6 +24,7 @@ export async function getModels() {
 
 export async function submitPredictionReview(data: FormData) {
     try {
+        let token_from_cookies = Cookies.get("token")
         const fetchPrediction = await fetch(API_BASE_URL + "/api/prediction/review", {
             method: "POST",
             headers: {
@@ -36,7 +38,7 @@ export async function submitPredictionReview(data: FormData) {
             throw new CustomError(dataPrediction.error.message, fetchPrediction.status)
         }
 
-        console.log("status_code: ", fetchPrediction.status)
+        console.log("data: ", dataPrediction)
 
         return dataPrediction;
     } catch (error: any) {
@@ -48,14 +50,43 @@ export async function submitPredictionReview(data: FormData) {
     }
 }
 
+export async function predictModelCompare(data: FormData) {
+    try {
+        let token_from_cookies = Cookies.get("token")
+        const fetchPredictionCompare = await fetch(API_BASE_URL + "/api/prediction/compare", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token_from_cookies}`
+            },
+            body: data
+        })
+
+        const dataPredictionCompare = await fetchPredictionCompare.json();
+        if (dataPredictionCompare?.error) {
+            throw new CustomError(dataPredictionCompare.error.message, fetchPredictionCompare.status)
+        }
+
+        console.log("data: ", dataPredictionCompare)
+        
+        return dataPredictionCompare;
+    } catch (error: any) {
+        if (error instanceof CustomError) {
+            throw error
+        } else {
+            throw new Error(error.message)
+        }
+    }
+}
+
 export async function submitPrediction(data: FormData) {
     try {
+        let token_from_cookies = Cookies.get("token")
         const fetchPrediction = await fetch(API_BASE_URL + "/api/prediction", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token_from_cookies}`
             },
-            body: data  
+            body: data
         })
 
         const dataPrediction = await fetchPrediction.json();

@@ -83,7 +83,7 @@ export default function CardSignIn() {
                             <TextInput id="password1" onChange={(e) => setPassword(e.target.value)} type="password" name="password" placeholder="*********" required />
                         </div>
                         <div>
-                            <button className="w-full mt-3 bg-blue-500 hover:bg-blue-700 text-white text-[16px] font-medium py-2 px-10 rounded-[6px] drop-shadow-lg">Sign-In</button>
+                            <button className="w-full mt-3 bg-[#5884C4] hover:bg-[#3062ae] text-white text-[16px] font-medium py-2 px-10 rounded-[6px] drop-shadow-lg">Sign-In</button>
                         </div>
                         <div className="flex justify-center items-center mt-3">
                             {loading && <Spinner aria-label="Medium sized spinner example" size="lg" />}

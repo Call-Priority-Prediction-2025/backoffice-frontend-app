@@ -1,11 +1,9 @@
-import MenuLayout from "@/app/ui/menu-layout";
-import PredictAction from "@/app/ui/prediction-review/predict-review-action";
-import UserManageAction from "@/app/ui/user-manage/user-manage-action";
+import AuthWrapper from "./AuthWrapper"
 
-export default function Page() {
-    return (
-        <MenuLayout titleHeader="Kelola User">
-            <UserManageAction />
-        </MenuLayout>
-    )
+export const metadata = {
+    title: 'Kelola User | Backoffice',
+}
+
+export default function UserManagePage() {
+    return <AuthWrapper />
 }

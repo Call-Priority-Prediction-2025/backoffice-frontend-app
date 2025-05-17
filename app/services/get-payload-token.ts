@@ -9,8 +9,8 @@ export default function getPayloadToken() {
     if (!token) {
         return null
     } else {
-        const payload: { user_id: number, username: string } = jwtDecode(token);
+        const payload: { user_id: number, username: string, user_role: string } = jwtDecode(token);
 
-        return { user_id: payload.user_id, username: payload.username }
+        return { user_id: payload.user_id, username: payload.username, user_role: payload.user_role }
     }
 }

@@ -8,6 +8,8 @@ import { submitPredictionReview } from "@/app/services/prediction-service"
 import MenuContainer from "../menu-container"
 import TableResult from "./table-result"
 import Swal from "sweetalert2"
+import TableReviewResult from "./table-review-result"
+import { ReviewResultPredict } from "@/app/lib/types"
 
 interface ModelPredictor {
     id: number
@@ -20,7 +22,17 @@ interface ModelPredictor {
 
 export default function PredictReviewAction() {
     const { data: modelPredictors, error, refetch } = useModelPredictors();
-
+    const [reviewPredictionResult, setReviewPredictionResult] = useState<ReviewResultPredict>({
+        total_data: 0,
+        total_correct: 0,
+        total_wrong: 0,
+        total_data_label_1: 0,
+        total_correct_label_1: 0,
+        total_wrong_label_1: 0,
+        total_data_label_0: 0,
+        total_correct_label_0: 0,
+        total_wrong_label_0: 0,
+    });
     const [predictionResult, setPredictionResult] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -31,7 +43,8 @@ export default function PredictReviewAction() {
             const formData = new FormData(event.currentTarget);
 
             let result = await submitPredictionReview(formData);
-            setPredictionResult(result.data);
+            setPredictionResult(result.data.sorted_result_prediction);
+            setReviewPredictionResult(result.data.review_result);
         } catch (error: any) {
             Swal.fire({
                 title: 'Oops...',
@@ -46,7 +59,7 @@ export default function PredictReviewAction() {
     }
 
     return (
-        <div className="flex flex-col gap-9">
+        <div className="flex flex-col gap-9 mb-7">
             <MenuContainer containerSize="w-[550px]" titleMenu="Input">
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col gap-5">
@@ -75,6 +88,7 @@ export default function PredictReviewAction() {
             </MenuContainer>
             <MenuContainer containerSize="" titleMenu="Hasil Rekomendasi">
                 <TableResult data={predictionResult} />
+                <TableReviewResult reviewResult={reviewPredictionResult} />
             </MenuContainer>
         </div>
     )

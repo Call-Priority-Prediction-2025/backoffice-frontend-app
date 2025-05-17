@@ -19,7 +19,6 @@ let initOnePredictor = {
     updated_at: null
 }
 
-const payloadToken = getPayloadToken();
 
 export default function ModelManageAction() {
     const { data: listModelPredictors, error, refetch } = useModelPredictors();
@@ -28,6 +27,7 @@ export default function ModelManageAction() {
     const [loading, setLoading] = useState(false);
     const [onePredictor, setOnePredictor] = useState(initOnePredictor);
 
+    const payloadToken = getPayloadToken();
 
     const handleSubmitFileModel = async (event: React.FormEvent<HTMLFormElement>) => {
         try {
@@ -37,6 +37,8 @@ export default function ModelManageAction() {
 
             let result = await submitNewFileModel(formData);
 
+            console.log(formData.getAll)
+
             Swal.fire({
                 text: result.message,
                 icon: 'success',
@@ -45,6 +47,8 @@ export default function ModelManageAction() {
                 showConfirmButton: false,
                 timer: 3200
             })
+
+            setOpenModal(false);
 
             refetch()
         } catch (error: any) {
@@ -148,7 +152,7 @@ export default function ModelManageAction() {
         <div>
             <MenuContainer containerSize="w-full" titleMenu="List Model Prediksi">
                 <div className="mb-5">
-                    <button onClick={() => setOpenModal(true)} className="py-1 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-700 drop-shadow-md">+ Upload File Model</button>
+                    <button onClick={() => setOpenModal(true)} className="py-1 px-6 bg-[#5884C4] text-white rounded-md hover:bg-[#3062ae] drop-shadow-md">+ Upload File Model</button>
                     <Modal show={openModal} onClose={() => setOpenModal(false)}>
                         <Modal.Header>Upload File Model Prediksi</Modal.Header>
                         <Modal.Body>
@@ -161,7 +165,7 @@ export default function ModelManageAction() {
                                     <FileInput id="file-upload" name="new_modelPred" required />
                                 </div>
                                 <div className="mt-8">
-                                    <button type="submit" className="w-full py-1 bg-slate-700 hover:bg-slate-600 text-white font-medium rounded-md">Submit</button>
+                                    <button type="submit" className="w-full py-1 bg-[#5884C4] hover:bg-[#3062ae] text-white font-medium rounded-md">Submit</button>
                                 </div>
                                 <div className="text-center">
                                     {loading && <Spinner className="text-white mt-8 text-center" size="lg" />}

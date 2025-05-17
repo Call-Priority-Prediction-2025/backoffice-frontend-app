@@ -2,10 +2,11 @@ import API_BASE_URL from "../config/api"
 import Cookies from "js-cookie";
 import CustomError from "@/app/custom-error"
 
-let token_from_cookies = Cookies.get("token");
+
 
 export async function getModelPredictors() {
     try {
+        let token_from_cookies = Cookies.get("token");
         const response = await fetch(API_BASE_URL + "/api/model-manage/models", {
             method: "GET",
             headers: {
@@ -22,6 +23,7 @@ export async function getModelPredictors() {
 
 export async function getOneModelPredictor(id: number) {
     try {
+        let token_from_cookies = Cookies.get("token");
         const response = await fetch(API_BASE_URL + `/api/model-manage/${id}/get-model`, {
             method: "GET",
             headers: {
@@ -38,6 +40,7 @@ export async function getOneModelPredictor(id: number) {
 
 export async function submitNewFileModel(data: FormData) {
     try {
+        let token_from_cookies = Cookies.get("token");
         const fetchSubmitFile = await fetch(API_BASE_URL + "/api/model-manage/add-model", {
             method: "POST",
             headers: {
@@ -61,6 +64,7 @@ export async function submitNewFileModel(data: FormData) {
 
 export async function submitUpdateFileModel(data: FormData, id: number) {
     try {
+        let token_from_cookies = Cookies.get("token");
         const fetchSubmitUpdateFile = await fetch(API_BASE_URL + `/api/model-manage/${id}/update-model`, {
             method: "PUT",
             headers: {
@@ -83,6 +87,7 @@ export async function submitUpdateFileModel(data: FormData, id: number) {
 
 export async function deleteModelPredictor(id: number) {
     try {
+        let token_from_cookies = Cookies.get("token");
         const fetchDeleteFile = await fetch(API_BASE_URL + `/api/model-manage/${id}/delete-model`, {
             method: "DELETE",
             headers: {

@@ -51,6 +51,7 @@ export default function UserManageAction() {
 
             refetch();
         } catch (error: any) {
+            console.log(error);
             if (error.message?.detail) {
                 Swal.fire({
                     title: 'Oops...',
@@ -168,7 +169,7 @@ export default function UserManageAction() {
         <div>
             <MenuContainer containerSize="w-full" titleMenu="List User">
                 <div>
-                    <button onClick={() => setOpenModalCreate(true)} className="py-1 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-700 drop-shadow-md">Tambah User</button>
+                    <button onClick={() => setOpenModalCreate(true)} className="py-1 px-6 bg-[#5884C4] text-white rounded-md hover:bg-[#3062ae] drop-shadow-md">Tambah User</button>
 
                     {/* Modal Create */}
                     <Modal show={openModalCreate} onClose={() => setOpenModalCreate(false)}>
@@ -214,9 +215,8 @@ export default function UserManageAction() {
                                     <TextInput onChange={(e) => setCreateUserData({ ...createUserData, confirm_password: e.target.value })} id="confirm_password" name="confirm_password" type="text" sizing="md" required />
                                 </div>
                                 <div className="mt-5">
-                                    <button type="submit" className="w-full py-1 bg-slate-700 hover:bg-slate-600 text-white font-medium rounded-md">
+                                    <button type="submit" className="w-full py-1 bg-[#5884C4] hover:bg-[#3062ae] text-white font-medium rounded-md">
                                         Submit
-
                                     </button>
                                 </div>
                                 <div className="text-center">
@@ -275,7 +275,6 @@ export default function UserManageAction() {
                                     </button>
                                 </div>
                                 <div className="text-center">
-
                                 </div>
                             </form>
                         </Modal.Body>

@@ -21,7 +21,7 @@ interface ResultPredict {
 
 export default function TableResult({ data }: { data: ResultPredict[] }) {
     return (
-        <div className="overflow-x-auto mt-[32px]">
+        <div className="overflow-x-auto overflow-y-auto max-h-[500px] mt-[32px]">
             <Table>
                 <Table.Head>
                     <Table.HeadCell>priority_numb</Table.HeadCell>
@@ -64,21 +64,6 @@ export default function TableResult({ data }: { data: ResultPredict[] }) {
                             </Table.Row>
                         )
                     }
-
-
-                    {/* <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                            Microsoft Surface Pro
-                        </Table.Cell>
-                        <Table.Cell>White</Table.Cell>
-                        <Table.Cell>Laptop PC</Table.Cell>
-                        <Table.Cell>$1999</Table.Cell>
-                        <Table.Cell>
-                            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-                                Edit
-                            </a>
-                        </Table.Cell>
-                    </Table.Row> */}
                 </Table.Body>
             </Table>
         </div>

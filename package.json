@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build-no-lint": "next build --no-lint",
     "start": "next start",
     "lint": "next lint"
   },
@@ -15,12 +16,13 @@
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
-    "next": "15.1.7",
+    "lucide-react": "^0.503.0",
+    "next": "^15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-modal": "^3.16.3",
     "react-toastify": "^11.0.5",
-    "sweetalert2": "^11.17.2",
+    "sweetalert2": "^11.6.13",
     "tailwind-merge": "^3.0.1"
   },
   "devDependencies": {

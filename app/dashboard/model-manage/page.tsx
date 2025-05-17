@@ -1,10 +1,10 @@
-import MenuLayout from "@/app/ui/menu-layout";
-import ModelManageAction from "@/app/ui/model-manage/model-manage-action";
+import AuthWrapper from "./auth-wrapper";
+
+export const metadata = {
+    title: 'Kelola Model | Backoffice',
+}
 
 export default function Page() {
-    return (
-        <MenuLayout titleHeader="Kelola Model Prediksi">
-            <ModelManageAction />
-        </MenuLayout>
-    )
+    return <AuthWrapper />
+
 }
