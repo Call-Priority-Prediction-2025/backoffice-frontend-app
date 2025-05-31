@@ -2,6 +2,7 @@ import API_BASE_URL from "../config/api"
 import Cookies from "js-cookie";
 import CustomError from "@/app/custom-error"
 import { CreateUser, User } from "../lib/types";
+import ErrorWithDetail from "../lib/errors";
 
 let token_from_cookies = Cookies.get("token")
 
@@ -67,12 +68,12 @@ export async function createUser(data: CreateUser) {
         }
 
         if (fetchCreateUser.status === 422) {
-            throw new Error(resultResponse.detail)
+            throw new ErrorWithDetail('validation error', resultResponse.detail);
         }
 
         return resultResponse;
     } catch (error: any) {
-        throw new Error(error.message)
+        throw error;
     }
 }
 
@@ -89,13 +90,18 @@ export async function updateUser(id: number, data: User) {
 
         const resultResponse = await fetchUpdateUser.json();
 
+
         if (resultResponse?.error) {
             throw new Error(resultResponse.error.message)
         }
 
+        if (fetchUpdateUser.status === 422) {
+            throw new ErrorWithDetail('validation error', resultResponse.detail);
+        }
+
         return resultResponse;
     } catch (error: any) {
-        throw new Error(error.message)
+        throw error;
     }
 }
 
