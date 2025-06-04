@@ -27,8 +27,8 @@ export default function TableModelPredictors(
 ) {
 
     return (
-        <div className="overflow-scroll">
-            <Table className="text-center">
+        <div className="overflow-x-auto overflow-y-auto max-h-[500px] mt-[32px]">
+            <Table className="text-center backdrop-blur-sm">
                 <Table.Head>
                     <Table.HeadCell>Id Model</Table.HeadCell>
                     <Table.HeadCell>File Model Name</Table.HeadCell>

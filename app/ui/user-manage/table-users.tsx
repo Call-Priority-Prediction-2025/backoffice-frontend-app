@@ -11,7 +11,7 @@ interface User {
 
 export default function TableUsers({ usersData, handleDelete, showModalUpdate }: { usersData: User[], handleDelete: (id: number) => void, showModalUpdate: (id: number) => void }) {
     return (
-        <div className="overflow-scroll">
+        <div className="overflow-x-auto overflow-y-auto max-h-[500px] mt-[32px]">
             <Table className="text-center">
                 <Table.Head>
                     <Table.HeadCell>No.</Table.HeadCell>

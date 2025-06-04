@@ -228,7 +228,13 @@ export default function UserManageAction() {
     }
 
     const handleUpdateInputChange = (fieldname: keyof User, value: string | null) => {
-        setOneUser({ ...oneUser, [fieldname]: value });
+        let processedValue: string | null = value;
+
+        if ((fieldname === 'password' || fieldname === 'confirm_password') && value === '') {
+            processedValue = null;
+        }
+
+        setOneUser({ ...oneUser, [fieldname]: processedValue });
         clearUpdateFieldError(fieldname);
     }
 
@@ -275,7 +281,7 @@ export default function UserManageAction() {
                                         id="usercode" name="usercode"
                                         type="text"
                                         sizing="md"
-                                        color={validationErrors.usercode ? 'red' : undefined}
+                                        color={validationErrors.usercode ? 'failure' : undefined}
                                         helperText={validationErrors.usercode && (
                                             <span className="text-red-600 text-sm">
                                                 {validationErrors.usercode}
@@ -452,7 +458,7 @@ export default function UserManageAction() {
                                         onChange={(e) => handleUpdateInputChange('confirm_password', e.target.value)}
                                         id="confirm_password"
                                         name="confirm_password"
-                                        type="password"
+                                        type="text"
                                         sizing="md"
                                         color={updateValidationErrors.confirm_password ? "failure" : undefined}
                                         helperText={updateValidationErrors.confirm_password && (

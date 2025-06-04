@@ -7,7 +7,7 @@ import { Table } from "flowbite-react";
 
 export default function TableResult({ data }: { data: ResultPredict[] }) {
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto overflow-y-auto max-h-[500px] mt-[32px]">
             <Table>
                 <Table.Head className="text-center">
                     <Table.HeadCell className="bg-orange-200">priority_numb</Table.HeadCell>
