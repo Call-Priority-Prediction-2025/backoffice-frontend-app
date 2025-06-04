@@ -54,3 +54,9 @@ export interface JwtPayload {
     username: string;
     user_role: string;
 }
+
+export interface ErrorDetail {
+    type: string;
+    loc: [];
+    msg: string;   
+}
