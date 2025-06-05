@@ -43,6 +43,9 @@ export default function PredictReviewAction() {
             const formData = new FormData(event.currentTarget);
 
             let result = await submitPredictionReview(formData);
+
+            console.log('result di prediction action: ', result.data.sorted_result_prediction)
+
             setPredictionResult(result.data.sorted_result_prediction);
             setReviewPredictionResult(result.data.review_result);
         } catch (error: any) {

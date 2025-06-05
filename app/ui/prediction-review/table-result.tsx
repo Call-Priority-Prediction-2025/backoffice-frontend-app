@@ -7,15 +7,16 @@ interface ResultPredict {
     id: string;
     cust_name: string;
     age: number;
-    city_domisile: string;
+    city_domicile: string;
     occupation: string;
     marital_status: string;
     monthly_salary: number;
-    tanggungan: number;
+    depend_child: number;
     tenor: number;
     probability_rejected_call: number;
     probability_accepted_call: number;
     previous_status: number;
+    predicted_status: number;
     conclusion_predict: string;
 }
 
@@ -27,6 +28,7 @@ export default function TableResult({ data }: { data: ResultPredict[] }) {
                     <Table.HeadCell>priority_numb</Table.HeadCell>
                     <Table.HeadCell>proba_reject_call</Table.HeadCell>
                     <Table.HeadCell>proba_accept_call</Table.HeadCell>
+                    <Table.HeadCell>predicted_status</Table.HeadCell>
                     <Table.HeadCell>previous_status</Table.HeadCell>
                     <Table.HeadCell className="bg-orange-200">conclusion_predict</Table.HeadCell>
                     <Table.HeadCell>cust_id</Table.HeadCell>
@@ -46,16 +48,17 @@ export default function TableResult({ data }: { data: ResultPredict[] }) {
                                 <Table.Cell className="font-bold">{index + 1}</Table.Cell>
                                 <Table.Cell>{item.probability_rejected_call}</Table.Cell>
                                 <Table.Cell>{item.probability_accepted_call}</Table.Cell>
+                                <Table.Cell>{item.predicted_status}</Table.Cell>
                                 <Table.Cell>{item.previous_status}</Table.Cell>
                                 <Table.Cell className={twMerge(item.conclusion_predict == "correct" ? "bg-green-400" : "bg-red-400", "text-white font-semibold")}>{item.conclusion_predict}</Table.Cell>
                                 <Table.Cell>{item.id}</Table.Cell>
                                 <Table.Cell>{item.cust_name}</Table.Cell>
                                 <Table.Cell>{item.age}</Table.Cell>
-                                <Table.Cell>{item.city_domisile}</Table.Cell>
+                                <Table.Cell>{item.city_domicile}</Table.Cell>
                                 <Table.Cell>{item.occupation}</Table.Cell>
                                 <Table.Cell>{item.marital_status}</Table.Cell>
                                 <Table.Cell>{item.monthly_salary}</Table.Cell>
-                                <Table.Cell>{item.tanggungan}</Table.Cell>
+                                <Table.Cell>{item.depend_child}</Table.Cell>
                                 <Table.Cell>{item.tenor}</Table.Cell>
                             </Table.Row>
                         )) : (
